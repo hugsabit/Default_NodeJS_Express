@@ -7,6 +7,7 @@
 ///---------------------------///
 
 const express = require('express');
+const contact = require('./routes/contact')
 
 ///------------------------///
 /// Déclaration de l'app   ///
@@ -32,10 +33,11 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use((req, res, next) => {
-    res.status(201);
-    res.send({ message: 'request received'});
+    console.log('a request as been received')
     next();
 })
+
+app.use('/api/contact', contact);
 
 ///-----------------------------------///
 /// Export de l'app pour le serveur   ///
